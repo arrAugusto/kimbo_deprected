@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { SideBarComponent } from '../components/side-bar/side-bar.component'; 
+import { NavigationBarComponent } from '../components/navigation-bar/navigation-bar.component';
 import { CommonModule } from '@angular/common';
-import { materialize } from 'rxjs';
-
-
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SideBarComponent,
+    NavigationBarComponent
+  ],
   imports: [
-    CommonModule,
-  ]
+    BrowserModule,
+    CommonModule
+  ],
+  providers: [],
 })
 export class AppModule { }

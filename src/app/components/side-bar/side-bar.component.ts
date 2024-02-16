@@ -1,7 +1,6 @@
-import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common'; // Importa la función isPlatformBrowser
-import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
-
+import { Component, OnInit, PLATFORM_ID, Inject, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common'; 
+import { isPlatformBrowser } from '@angular/common'; 
 
 @Component({
   selector: 'app-side-bar',
@@ -11,15 +10,21 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
 export class SideBarComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
+  items = ['Area operativa', 'Area bodega', 'Area saldos', 'Admón. Kimbo'];
   
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) { // Verifica si estamos en un navegador
-      // Importa y ejecuta el código de Materialize solo si estamos en un navegador
+    if (isPlatformBrowser(this.platformId)) { 
       import('materialize-css').then((M) => {
-        // Inicializa el sidenav
         var elems = document.querySelectorAll('.sidenav');
         var instances = M.Sidenav.init(elems);
       });
     }
   }
 }
+
+@NgModule({
+  declarations: [SideBarComponent], // Declare the SideBarComponent
+  imports: [CommonModule], // Import CommonModule
+  exports: [SideBarComponent] // Export the SideBarComponent if needed
+})
+export class SideBarModule {}
