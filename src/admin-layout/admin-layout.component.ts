@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, HostListener, ViewEncapsulation } from "@angular/core";
 
 @Component({
-  selector: 'app-admin-layout',
-  standalone: true,
-  imports: [],
-  templateUrl: './admin-layout.component.html',
-  styleUrl: './admin-layout.component.css'
+  selector: "app-admin-layout",
+  templateUrl: "./admin-layout.component.html",
+  styleUrls: ["./admin-layout.component.scss"],
+  encapsulation: ViewEncapsulation.None
 })
-export class AdminLayoutComponent {
+export class AdminLayoutComponent implements OnInit {
+  isMobileResolution: boolean;
 
+  constructor() {
+    if (window.innerWidth < 1200) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
+  }
+
+  ngOnInit() {}
 }
